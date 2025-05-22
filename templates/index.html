@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landing de Análisis de Datos</title>
+
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles-index.css') }}" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet" />
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+</head>
+<body>
+  <header data-aos="fade-down">
+    <img src="{{ url_for('static', filename='assets/logo_Analitica.png') }}" alt="Logo" class="logo" />
+    <nav>
+      <a href="{{ url_for('index') }}" class="active">Inicio</a>
+      <a href="{{ url_for('descriptivo') }}">Análisis Descriptivo</a>
+      <a href="{{ url_for('exploratorio') }}">Análisis Exploratorio</a>
+      <a href="{{ url_for('diferencial') }}">Análisis Diferencial</a>
+      <a href="{{ url_for('predictivo') }}">Análisis Predictivo</a>
+      <a href="{{ url_for('nosotros') }}">Nosotros</a>
+      <a href="{{ url_for('resumen') }}">Resumen</a>
+
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+      <h1>Explora el Poder de tus Datos</h1>
+      <p>Descubre insights a través de distintos tipos de análisis</p>
+    </div>
+  </section>
+
+  <section class="grid" id="grid-section">
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <i class="fas fa-chart-bar card-icon"></i>
+      <h3><a href="{{ url_for('descriptivo') }}">Descriptivo</a></h3>
+      <p>Resúmenes y características generales.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <i class="fas fa-search-plus card-icon"></i>
+      <h3><a href="{{ url_for('exploratorio') }}">Exploratorio</a></h3>
+      <p>Relaciones, patrones y valores atípicos.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <i class="fas fa-balance-scale card-icon"></i>
+      <h3><a href="{{ url_for('diferencial') }}">Diferencial</a></h3>
+      <p>Comparación entre grupos de datos.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="400">
+      <i class="fas fa-brain card-icon"></i>
+      <h3><a href="{{ url_for('predictivo') }}">Predictivo</a></h3>
+      <p>Modelos para anticipar el futuro.</p>
+    </div>
+  </section>
+
+  <!-- Nueva sección para Data Table -->
+  <section class="data-table-section" data-aos="fade-up" data-aos-delay="500" style="padding: 2rem;">
+    <h2>Datos de Cybersecurity</h2>
+    <table id="dataTable" class="display" style="width:100%">
+      <thead>
+        <tr>
+          {% for col in columns %}
+            <th>{{ col }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+          <tr>
+            {% for col in columns %}
+              <td>{{ row[col] }}</td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="footer">
+    <div>
+      <a href="#">Síguenos</a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+    </div>
+    <p>© 2025 Derechos Reservados</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+
+    $(document).ready(function () {
+      $('#dataTable').DataTable({
+        paging: true,
+        searching: true,
+        ordering: true,
+        order: [], // no order by default
+        language: {
+          url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+        }
+      });
+    });
+  </script>
+</body>
+</html>

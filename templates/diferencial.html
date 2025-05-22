@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Análisis Diferencial</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles-diferencial.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <h1>📊 Análisis Diferencial</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="{{ url_for('descriptivo') }}">Descriptivo</a>
+      <a href="{{ url_for('exploratorio') }}">Exploratorio</a>
+      <a href="{{ url_for('predictivo') }}">Predictivo</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <h2>¿Qué es el Análisis Diferencial?</h2>
+    <p>
+      El análisis diferencial permite identificar diferencias significativas entre grupos de datos.
+      Se utiliza para comparar variables categóricas o numéricas entre países, tipos de ataques u otras dimensiones.
+    </p>
+    <img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="Diferencias" />
+  </section>
+
+  <section class="objetivo">
+    <h2>🎯 Objetivo</h2>
+    <p>
+      Comparar el impacto financiero medio entre los distintos países afectados por ciberataques.
+    </p>
+  </section>
+
+  <section class="graficos">
+    <h2>📉 Comparativa de Pérdidas por País</h2>
+    <div class="chart">
+      {{ graph_diff | safe }}
+    </div>
+  </section>
+
+  <footer>
+    <a href="{{ url_for('index') }}"><i class="fas fa-home"></i></a>
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fas fa-envelope"></i></a>
+  </footer>
+</body>
+</html>

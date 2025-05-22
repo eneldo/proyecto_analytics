@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Resumen del Proyecto</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles-resumen.css') }}">
+</head>
+<body>
+  <header>
+    <h1>Resumen del Proyecto - Power BI</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Inicio</a>
+    </nav>
+  </header>
+
+  <main>
+    <p>A continuación se presenta un resumen visual de los datos analizados:</p>
+    <iframe width="100%" height="600px" 
+            src="https://app.powerbi.com/view?r=eyJrIjoiM2I5ZWM5ZWUtZmZjNy00MDBjLTllNWQtMTZiODRjZDhlMTJlIiwidCI6IjI5Mjc1NWMwLWYwN2ItNGI5MS1iYjZlLTg3MzM4MjA5Y2M5NiIsImMiOjR9"
+            frameborder="0" allowfullscreen="true"></iframe>
+  </main>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Análisis Predictivo | Ciberseguridad</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles-predictivo.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  
+    
+</head>
+<body>
+  <header>
+    <h1>Análisis Predictivo de Pérdidas Financieras en Ciberseguridad</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="{{ url_for('descriptivo') }}">Descriptivo</a>
+      <a href="{{ url_for('exploratorio') }}">Exploratorio</a>
+      <a href="{{ url_for('diferencial') }}">Diferencial</a>
+      <a href="{{ url_for('predictivo') }}">Predictivo</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Mapa de Correlación</h2>
+      <img src="data:image/png;base64,{{ corr_img }}" alt="Mapa de correlación" />
+    </section>
+
+    <section>
+      <h2>Modelos y Métricas R²</h2>
+      <p><strong>Regresión Polinómica (grado 2) R²:</strong> {{ r2_poly }}</p>
+      <p><strong>Random Forest R²:</strong> {{ r2_rf }}</p>
+    </section>
+
+    <section>
+      <h2>Importancia de Variables (Random Forest)</h2>
+      <div>
+        {{ graph_importance | safe }}
+      </div>
+    </section>
+
+    <section>
+      <h2>Comparación Actual vs Predicho</h2>
+
+      <h3>Random Forest</h3>
+      <div>
+        {{ graph_pred_comp_rf | safe }}
+      </div>
+
+      <h3>Regresión Polinómica</h3>
+      <div>
+        {{ graph_pred_comp_poly | safe }}
+      </div>
+    </section>
+
+    <section>
+      <h2>Interpretación del Score del Modelo</h2>
+      <p>
+        El <strong>coeficiente de determinación (R²)</strong> indica qué tan bien el modelo predice la variable objetivo.
+        Un valor cercano a 1 significa un buen ajuste, mientras que valores cercanos a 0 o negativos indican que el modelo no explica bien la variabilidad de los datos.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Data Analytics - Proyecto de Ciberseguridad</p>
+  </footer>
+</body>
+</html>

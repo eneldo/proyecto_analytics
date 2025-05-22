@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Análisis Exploratorio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles-exploratorio.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>🔍 Análisis Exploratorio</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Inicio</a>
+    </nav>
+  </header>
+
+  <section class="intro">
+    <h2>¿Qué es?</h2>
+    <p>Busca patrones, valores atípicos y relaciones entre variables antes de aplicar modelos predictivos.</p>
+  </section>
+
+  <section class="graficos">
+    <h3>📊 Matriz de Correlación</h3>
+    {{ correlation_html|safe }}
+  </section>
+
+  <section class="graficos">
+    <h3>📊 Pérdidas Financieras Promedio por País</h3>
+    {{ bar_html|safe }}
+  </section>
+
+  <section class="graficos">
+    <h3>📈 Distribución de Usuarios Afectados</h3>
+    {{ hist_html|safe }}
+  </section>
+
+</body>
+</html>

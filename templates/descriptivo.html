@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Análisis Descriptivo</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles-descriptivo.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header>
+    <h1>📊 Análisis Descriptivo</h1>
+    <nav>
+      <a href="{{ url_for('index') }}">Inicio</a>
+      <a href="#resumen">Resumen</a>
+      <a href="#graficos">Gráficos</a>
+      <a href="#indicadores">Indicadores</a>
+    </nav>
+  </header>
+
+  <section class="intro" id="resumen">
+    <h2>¿Qué es el Análisis Descriptivo?</h2>
+    <p>
+      El análisis descriptivo consiste en resumir y organizar los datos históricos para obtener información útil.
+      Su objetivo es presentar lo que ha ocurrido mediante métricas como medias, medianas, desviaciones estándar, y visualizaciones.
+    </p>
+    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" alt="Estadísticas" />
+  </section>
+
+  <section class="collapsibles">
+    <button class="collapsible">📌 Objetivo del análisis descriptivo</button>
+    <div class="content">
+      <p>
+        Diseñar y desarrollar un dashboard interactivo utilizando Python y sus principales librerías de análisis y visualización de datos 
+        (Pandas, Seaborn, Matplotlib, Plotly), complementado con herramientas como Excel, Power BI y tecnologías web (HTML, CSS, JS). 
+        El objetivo es facilitar el análisis detallado de datos sobre ataques cibernéticos a industrias a nivel mundial durante el periodo 2015 y 2024, permitiendo identificar 
+        patrones temporales, impactos económicos, sectores más vulnerables y comportamientos diferenciados por país.
+      </p>
+    </div>
+
+    <button class="collapsible">📁 Dataset utilizado</button>
+    <div class="content">
+      <p>Se utilizó una base de datos de registros de Ataques Cibernéticos, extraída de la plataforma de Datos Abiertos.
+        https://www.kaggle.com/datasets/atharvasoundankar/global-cybersecurity-threats-2015-2024
+      </p>
+    </div>
+  </section>
+
+  <section class="indicadores" id="indicadores">
+    <h2>Resumen Estadístico</h2>
+    <div>
+      {{ resumen | safe }}
+    </div>
+  </section>
+
+  <section id="graficos" class="graficos">
+    <h2>Visualizaciones</h2>
+
+    <div id="bar-chart" style="width:100%; max-width:900px; margin:auto;">
+      {{ graph_bar | safe }}
+    </div>
+
+    <div id="pie-chart" style="width:100%; max-width:900px; margin:auto; margin-top:40px;">
+      {{ graph_pie | safe }}
+    </div>
+
+  </section>
+
+  <footer>
+    <a href="{{ url_for('index') }}"><i class="fas fa-home"></i></a>
+    <a href="#"><i class="fab fa-whatsapp"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fas fa-envelope"></i></a>
+  </footer>
+
+  <script>
+    const collapsibles = document.querySelectorAll(".collapsible");
+    collapsibles.forEach(btn => {
+      btn.addEventListener("click", function () {
+        this.classList.toggle("active");
+        const content = this.nextElementSibling;
+        if (content.style.display === "block") {
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

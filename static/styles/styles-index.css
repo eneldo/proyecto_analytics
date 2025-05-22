@@ -1,0 +1,324 @@
+/* styles/styles-index.css */
+
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Zen+Dots&display=swap');
+
+/* Reset básico y configuración global */
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth; /* Desplazamiento suave para anclas */
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif; /* Fuente base más legible */
+  background-color: #f4f7f6; /* Un gris muy claro y suave */
+  color: #333; /* Color de texto principal oscuro */
+  line-height: 1.6; /* Espaciado de línea para mejor lectura */
+  overflow-x: hidden; /* Evita el desbordamiento horizontal por animaciones AOS */
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2c3e50; /* Un azul oscuro/gris más moderno */
+  color: white;
+  padding: 1rem 2rem; /* Ajusta según necesites */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Sombra sutil */
+  position: sticky; /* Para que se quede fijo al hacer scroll */
+  top: 0;
+  z-index: 1000; /* Para asegurar que esté por encima de otros elementos */
+  transition: background-color 0.3s ease; /* Transición suave para futuros cambios */
+}
+
+.logo {
+  height: 45px; /* Ajusta la altura de tu logo */
+  width: auto; /* Mantiene la proporción */
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05); /* Pequeño efecto al pasar el ratón */
+}
+
+nav a {
+  margin-left: 1.5rem;
+  color: #ecf0f1; /* Un blanco menos brillante, más suave */
+  text-decoration: none;
+  font-weight: 500; /* Un poco más de peso */
+  padding: 0.5rem 0; /* Espacio para el borde inferior en hover */
+  position: relative; /* Para el pseudo-elemento del borde */
+  transition: color 0.3s ease;
+}
+
+nav a::after { /* Línea decorativa para hover/active */
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3498db; /* Un azul vibrante para el acento */
+  transition: width 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: #ffffff; /* Blanco brillante en hover/active */
+}
+
+nav a:hover::after,
+nav a.active::after {
+  width: 100%; /* Mostrar la línea completa */
+}
+
+nav a.active {
+  font-weight: 700; /* Más peso para el activo */
+  color: #5dade2; /* Un azul más claro para el activo para diferenciar */
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 0; /* Quitamos padding para que la imagen ocupe todo */
+  color: white;
+  min-height: 70vh; /* O la altura que prefieras, incluso 100vh */
+  display: flex; /* Para centrar hero-content */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* Para el overlay */
+  background-image: url('../assets/hero-background4.jpg.jpg'); /* RUTA A TU IMAGEN DE FONDO */
+  background-size: cover; /* Cubre todo el área */
+  background-position: center center; /* Centra la imagen */
+  background-attachment: fixed; /* Efecto parallax simple */
+}
+
+.hero::before { /* Overlay para mejorar legibilidad del texto */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Gradiente para el overlay */
+  background: linear-gradient(135deg, rgba(44, 62, 80, 0.75) 0%, rgba(66, 99, 139, 0.65) 100%);
+  /* O un color sólido: background-color: rgba(0, 0, 0, 0.5); */
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative; /* Para que esté sobre el overlay */
+  z-index: 2;
+  padding: 2rem; /* Espacio interno para el contenido */
+  max-width: 700px; /* Evita que el texto sea demasiado ancho */
+}
+
+.hero h1 {
+  font-family: 'Zen Dots', cursive;
+  font-size: clamp(2.2rem, 6vw, 4rem); /* Ajustado para más impacto */
+  margin-bottom: 0.75rem;
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+  color: #ffffff; /* Asegurar que el color sea blanco */
+}
+
+.hero p {
+  font-size: clamp(1.1rem, 3vw, 1.5rem); /* Ajustado */
+  max-width: 600px;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  color: #ecf0f1; /* Un blanco un poco más suave */
+}
+
+/* Opcional: Estilo para el botón CTA en el Hero */
+.cta-button {
+  display: inline-block;
+  background-color: #3498db; /* Color de acento */
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px; /* Bordes redondeados */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-top: 1rem; /* Espacio si hay texto arriba */
+}
+
+.cta-button:hover {
+  background-color: #2980b9; /* Color más oscuro al pasar el ratón */
+  transform: translateY(-2px);
+}
+
+/* Grid y Cards */
+.grid {
+  display: grid;
+  /* Responsive: 1 columna en pequeño, 2 en mediano, hasta 4 en grande */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem; /* Un poco más de espacio */
+  padding: 4rem 2rem; /* Más padding vertical */
+  max-width: 1200px; /* Limitar ancho máximo del grid */
+  margin: 0 auto; /* Centrar el grid */
+}
+
+.card {
+  background: white;
+  padding: 2rem 1.5rem; /* Ajustar padding */
+  border-radius: 12px; /* Bordes más redondeados */
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08); /* Sombra más suave y pronunciada */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex; /* Para alinear contenido si es necesario */
+  flex-direction: column;
+  text-align: center; /* Centrar contenido de la card */
+}
+
+/* Ya no se necesita el hover general aquí si AOS maneja la aparición.
+   Si quieres un efecto adicional al pasar el ratón después de la animación AOS, puedes mantenerlo.
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+*/
+
+.card-icon {
+  font-size: 3rem; /* Tamaño del icono */
+  color: #3498db; /* Color de acento, puedes variarlo por card si quieres */
+  margin-bottom: 1rem;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Transición con rebote */
+}
+
+.card:hover .card-icon { /* Efecto dinámico en el icono al pasar el ratón sobre la card */
+  transform: scale(1.15) rotate(10deg);
+}
+
+.card h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem; /* Ajustar tamaño */
+  color: #2c3e50; /* Mismo color que el header para consistencia */
+  margin-top: 0;
+  margin-bottom: 0.5rem; /* Menos espacio inferior */
+}
+
+.card h3 a {
+  text-decoration: none;
+  color: inherit; /* Hereda el color del h3 */
+  transition: color 0.3s ease;
+}
+
+.card h3 a:hover {
+  color: #3498db; /* Azul de acento al pasar el ratón */
+}
+
+.card p {
+  color: #555; /* Un gris más oscuro para el texto del párrafo */
+  font-size: 0.9rem; /* Un poco más pequeño para que no compita con el título */
+  flex-grow: 1; /* Para que el párrafo ocupe espacio si las cards tienen alturas variables */
+  margin-bottom: 0; /* Quitar margen inferior si no hay más elementos */
+  line-height: 1.5;
+}
+
+/* Footer */
+footer.footer { /* Añadí .footer para ser específico con tu clase HTML */
+  background: #1c2833; /* Un negro/gris muy oscuro */
+  color: #bdc3c7; /* Un gris claro para el texto */
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+
+.footer div { /* Contenedor de los enlaces sociales */
+  margin-bottom: 1rem;
+}
+
+.footer div a { /* Estilo para "siguenos" y los iconos */
+  color: #ecf0f1; /* Blanco suave */
+  text-decoration: none;
+  margin: 0 0.75rem; /* Espacio entre elementos */
+  font-size: 1rem; /* Tamaño para "siguenos" */
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block; /* Para aplicar transform */
+}
+
+.footer div a i.fa-brands { /* Específico para iconos FontAwesome */
+  font-size: 1.8rem; /* Iconos más grandes */
+  vertical-align: middle; /* Mejor alineación con texto si lo hubiera */
+}
+
+.footer div a:hover {
+  color: #3498db; /* Color de acento al pasar el ratón */
+  transform: translateY(-3px); /* Pequeño efecto de elevación */
+}
+
+.footer p { /* Derechos reservados */
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column; /* Apilar logo y nav en móviles */
+    padding: 1rem;
+    text-align: center;
+  }
+  .logo {
+    margin-bottom: 0.5rem;
+  }
+  nav {
+    margin-top: 0.5rem;
+  }
+  nav a {
+    margin: 0 0.75rem; /* Espacio horizontal entre enlaces */
+    font-size: 0.9rem; /* Reducir un poco el tamaño */
+    padding: 0.3rem 0.5rem; /* Añadir padding para mejor toque */
+  }
+  .hero {
+    min-height: 60vh;
+    background-attachment: scroll; /* Desactivar parallax en móviles para rendimiento */
+  }
+  .hero h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+  }
+  .hero p {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+  }
+  .grid {
+    padding: 3rem 1rem;
+    gap: 1.5rem;
+  }
+  .card-icon {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav {
+    display: flex;
+    flex-wrap: wrap; /* Permitir que los enlaces se envuelvan */
+    justify-content: center; /* Centrar los enlaces */
+  }
+  nav a {
+    margin: 0.3rem 0.5rem; /* Ajustar margen para envolver */
+  }
+  .card {
+    padding: 1.5rem;
+  }
+  .card h3 {
+    font-size: 1.3rem;
+  }
+  .card p {
+    font-size: 0.9rem;
+  }
+  .footer div a {
+    margin: 0 0.5rem; /* Menos espacio en footer */
+  }
+  .footer div a i.fa-brands {
+    font-size: 1.5rem;
+  }
+}

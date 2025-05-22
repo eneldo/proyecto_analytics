@@ -1,0 +1,289 @@
+/* --- Variables y Reseteo Básico --- */
+:root {
+    --primary-color: #007bff; /* Azul primario */
+    --secondary-color: #6c757d; /* Gris secundario */
+    --light-gray: #f8f9fa;
+    --dark-text: #212529; /* Un negro menos intenso */
+    --light-text: #ffffff;
+    --card-bg: #ffffff;
+    --shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    --hover-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+    --border-radius: 12px; /* Ligeramente más redondeado */
+    --transition-speed: 0.3s;
+    /* Nueva variable para el overlay del hero */
+    --hero-overlay-color: rgba(10, 25, 47, 0.7); /* Un azul oscuro casi negro, semitransparente */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Usando las Google Fonts si las incluiste */
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    background-color: var(--light-gray);
+    color: var(--dark-text);
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1140px; /* Ancho de contenedor común */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* --- Hero Section (Anteriormente Main Header) --- */
+.hero-section { /* Antes .main-header */
+    position: relative; /* Necesario para la superposición (overlay) */
+    background-image: url('../assets/hero-background1.jpg.jpg'); /* RUTA A TU IMAGEN DE FONDO */
+    background-size: cover; /* Cubre todo el espacio */
+    background-position: center center; /* Centra la imagen */
+    background-attachment: fixed; /* Efecto Parallax sutil (opcional) */
+    color: var(--light-text);
+    padding: 100px 20px 80px; /* Más padding para un hero */
+    text-align: center;
+    min-height: 60vh; /* Altura mínima del hero */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Superposición (Overlay) para el Hero Section */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--hero-overlay-color); /* Color de superposición definido en :root */
+    z-index: 1; /* Detrás del contenido, encima de la imagen de fondo */
+}
+
+/* Contenido del Hero (Texto, Enlaces) */
+.hero-content {
+    position: relative; /* Para que esté por encima del overlay */
+    z-index: 2;
+    max-width: 700px; /* Limita el ancho del texto para mejor legibilidad */
+    animation: fadeInHeroContent 1s ease-out forwards; /* Animación de entrada */
+}
+
+@keyframes fadeInHeroContent {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+.hero-section h1 { /* Antes .main-header h1 */
+    font-family: 'Montserrat', sans-serif; /* Usando Montserrat para títulos */
+    font-size: 3em; /* Más grande para un hero */
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+.hero-section .subtitle { /* Antes .main-header .subtitle */
+    font-size: 1.3em;
+    font-weight: 300;
+    opacity: 0.9;
+    margin-bottom: 30px; /* Más espacio */
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.back-to-home-link {
+    display: inline-block;
+    padding: 12px 25px; /* Ligeramente más grande */
+    background-color: var(--primary-color); /* Color primario para más contraste */
+    color: var(--light-text);
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    /* border: 1px solid rgba(255, 255, 255, 0.5); */ /* Opcional: borde si se prefiere */
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.back-to-home-link i {
+    margin-right: 8px;
+}
+
+.back-to-home-link:hover {
+    background-color: #0056b3; /* Un tono más oscuro del primario */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+
+/* --- Sección Principal (Team Section) --- */
+.team-section { /* Era <main> en el HTML */
+    padding: 60px 0; /* Ajuste de padding */
+    flex-grow: 1;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 35px; /* Un poco más de espacio */
+}
+
+.team-member-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInSlideUp 0.5s ease-out forwards; /* Animación de entrada más rápida */
+}
+
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Staggered animation delay */
+.team-member-card:nth-child(1) { animation-delay: 0.2s; } /* Inicia después del hero */
+.team-member-card:nth-child(2) { animation-delay: 0.35s; }
+.team-member-card:nth-child(3) { animation-delay: 0.5s; }
+
+
+.team-member-card:hover {
+    transform: translateY(-10px); /* No escalar para mantener consistencia con otros elementos */
+    box-shadow: var(--hover-shadow);
+}
+
+
+
+
+
+
+.member-image-container {
+    width: 100%;
+    height: 280px; /* Un poco más alto para mejor proporción */
+    overflow: hidden;
+    position: relative;
+}
+
+.member-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Transición más suave */
+}
+
+.team-member-card:hover .member-photo {
+    transform: scale(1.08); /* Zoom más sutil */
+}
+
+
+
+
+
+
+.member-info {
+    padding: 25px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.member-name { /* Nueva clase, o h3 si prefieres */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em; /* Ajustado */
+    color: var(--dark-text); /* Color de texto oscuro para contraste en tarjeta blanca */
+    margin-bottom: 6px;
+    font-weight: 700; /* Más peso */
+}
+
+.member-role {
+    font-size: 0.95em; /* Ajustado */
+    color: var(--primary-color); /* Rol con color primario */
+    /* font-style: italic; */ /* Quitado el itálico para un look más limpio */
+    margin-bottom: 12px;
+    font-weight: 500;
+    text-transform: uppercase; /* Para destacar el rol */
+    letter-spacing: 0.5px;
+}
+
+.member-bio { /* Nueva clase, o p si prefieres */
+    font-size: 0.9em; /* Ajustado */
+    color: var(--secondary-color); /* Gris secundario para bio */
+    flex-grow: 1;
+    margin-bottom: 20px;
+    text-align: left; /* O center si prefieres */
+    line-height: 1.6;
+}
+
+.social-links {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef; /* Borde más claro */
+}
+
+.social-links a {
+    color: var(--secondary-color);
+    font-size: 1.4em; /* Ajustado */
+    margin: 0 12px; /* Más espaciado */
+    text-decoration: none;
+    transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+/* --- Pie de Página --- */
+footer {
+    text-align: center;
+    padding: 35px 20px; /* Un poco más de padding */
+    background-color: #1a202c; /* Un color de fondo de footer más oscuro */
+    color: #a0aec0; /* Color de texto más claro para el footer oscuro */
+    font-size: 0.85em;
+    border-top: 3px solid var(--primary-color); /* Borde superior con color primario */
+}
+/* Media Queries para Responsividad (Ajustar según sea necesario) */
+@media (max-width: 992px) {
+    .hero-section h1 { font-size: 2.5em; }
+    .hero-section .subtitle { font-size: 1.15em; }
+    .team-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+    .member-image-container { height: 260px; }
+}
+
+@media (max-width: 768px) {
+    .hero-section { min-height: 50vh; padding: 80px 20px 60px; }
+    .hero-section h1 { font-size: 2.1em; }
+    .hero-section .subtitle { font-size: 1.05em; margin-bottom: 25px; }
+    .back-to-home-link { padding: 10px 20px; font-size: 0.95em;}
+    .team-grid { grid-template-columns: 1fr; gap: 30px; }
+    .member-image-container { height: 300px; } /* Puede ser más alto en una sola columna */
+}
+
+@media (max-width: 480px) {
+    .container { width: 95%; }
+    .hero-section h1 { font-size: 1.8em; }
+    .hero-section .subtitle { font-size: 1em; }
+    .member-name { font-size: 1.3em; }
+    .member-role { font-size: 0.9em; }
+    .member-bio { font-size: 0.85em; }
+    .social-links a { font-size: 1.3em; }
+}

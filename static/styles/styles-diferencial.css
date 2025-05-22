@@ -1,0 +1,36 @@
+body {
+    font-family: sans-serif;
+    background: #f0f0f0;
+    color: #333;
+  }
+  header {
+    background: #004080;
+    color: white;
+    padding: 1rem 2rem;
+  }
+  nav a {
+    color: white;
+    margin-left: 1rem;
+  }
+  .intro, .graficos {
+    padding: 2rem;
+    text-align: center;
+  }
+  .collapsible {
+    background-color: #007acc;
+    color: white;
+    cursor: pointer;
+    padding: 1rem;
+    border: none;
+    width: 100%;
+  }
+  .content {
+    display: none;
+    background: #fff;
+    padding: 1rem;
+  }
+  img {
+    width: 80%;
+    max-width: 600px;
+  }
+  

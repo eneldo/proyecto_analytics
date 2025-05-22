@@ -1,0 +1,116 @@
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background: #f9f9f9;
+  color: #222;
+  line-height: 1.6;
+}
+
+/* Encabezado */
+header {
+  background: #0d1128;
+  color: #fff;
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+nav {
+  margin-top: 1rem;
+}
+
+nav a {
+  color: #61dafb;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+/* Secciones */
+section {
+  padding: 3rem 2rem;
+  max-width: 960px;
+  margin: auto;
+  background: white;
+  margin-top: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Introducción */
+.intro img {
+  display: block;
+  margin: 2rem auto;
+  max-width: 120px;
+  opacity: 0.9;
+}
+
+/* Modelo */
+.modelo p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+/* Resultado del score */
+.score-box {
+  background-color: #e9f5ff;
+  padding: 2rem;
+  border-left: 6px solid #1d4ed8;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.score-box h3 {
+  margin-top: 0;
+  color: #1d4ed8;
+  font-size: 1.4rem;
+}
+
+.score-box p {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #111827;
+  margin: 0.5rem 0 0;
+}
+
+/* Gráficos */
+.chart {
+  margin-top: 2rem;
+}
+
+.chart iframe {
+  width: 100%;
+  height: 520px;
+  border: none;
+}
+
+/* Footer */
+footer {
+  background: #0d1128;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: #61dafb;
+  margin: 0 0.5rem;
+  font-size: 1.3rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #ffffff;
+}

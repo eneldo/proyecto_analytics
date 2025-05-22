@@ -1,0 +1,350 @@
+/* styles-descriptivo.css */
+
+/* Importar fuentes (si no están ya globales o si quieres ser específico) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Variables de color (opcional, pero útil para consistencia) */
+:root {
+  --primary-color: #3498db;    /* Azul principal (similar al index) */
+  --secondary-color: #2c3e50; /* Azul oscuro/gris (similar al header del index) */
+  --accent-color: #e74c3c;     /* Un color de acento (puedes elegir otro) */
+  --light-bg: #f4f7f6;         /* Fondo claro (similar al index) */
+  --dark-text: #333;
+  --light-text: #ecf0f1;
+  --card-bg: #ffffff;
+  --border-color: #e0e0e0;
+}
+
+/* Estilos Globales */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  line-height: 1.7;
+}
+
+
+
+    .tabla-resumen {
+      text-align: center;
+      margin: 30px auto;
+      width: 90%;
+      overflow-x: auto;
+    }
+    .charts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      margin: 40px auto;
+    }
+    iframe {
+      border: none;
+      width: 95%;
+      max-width: 900px;
+      height: 500px;
+    }
+  
+
+
+
+
+/* Header */
+header {
+  background: var(--secondary-color);
+  color: var(--light-text);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+header nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: var(--light-text);
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 0.3rem;
+}
+
+header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+header nav a:hover,
+header nav a.active { /* Si quieres marcar la página actual */
+  color: #ffffff;
+}
+
+header nav a:hover::after,
+header nav a.active::after {
+  width: 100%;
+}
+
+/* Sección Intro */
+.intro {
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: var(--card-bg); /* Fondo blanco para destacar */
+  border-bottom: 1px solid var(--border-color);
+}
+
+.intro h2 {
+  font-size: 2.2rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+}
+
+.intro p {
+  max-width: 700px;
+  margin: 0 auto 1.5rem auto;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.intro img {
+  margin-top: 1rem;
+  max-width: 100px; /* Ajusta según el icono */
+  height: auto;
+  opacity: 0.8;
+}
+
+/* Sección Collapsibles */
+.collapsibles {
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.collapsible {
+  background-color: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  margin-bottom: 0.25rem; /* Menos espacio entre botón y su contenido */
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  display: flex; /* Para alinear icono y texto */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collapsible:hover {
+  background-color: #2980b9; /* Azul más oscuro */
+}
+
+.collapsible.active {
+  background-color: var(--secondary-color); /* Un color diferente cuando está activo */
+  border-bottom-left-radius: 0; /* Para que se una bien con el contenido */
+  border-bottom-right-radius: 0;
+}
+
+.collapsible::after { /* Indicador de flecha */
+  content: '\f078'; /* Icono de flecha hacia abajo de FontAwesome */
+  font-family: 'Font Awesome 6 Free'; /* Asegúrate que coincide con tu versión de FA */
+  font-weight: 900;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.collapsible.active::after {
+  transform: rotate(180deg); /* Flecha hacia arriba */
+}
+
+.content {
+  padding: 1.5rem;
+  display: none;
+  overflow: hidden;
+  background-color: var(--card-bg);
+  margin-bottom: 1rem; /* Espacio entre collapsibles completos */
+  border: 1px solid var(--border-color);
+  border-top: none; /* El borde superior lo da el botón */
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.content p {
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Sección Indicadores */
+.indicadores {
+  background: var(--light-bg); /* Coherente con el fondo del body */
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.indicadores h2 {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 200px; /* Un poco más de ancho */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 1.8rem; /* Hacer el número más grande */
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin: 0;
+}
+
+/* Sección Gráficos */
+.graficos {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+}
+
+.graficos h2 {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  margin-bottom: 2rem;
+}
+
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.charts img {
+  max-width: 100%; /* Hacerlo responsive dentro de su contenedor */
+  width: 400px; /* Ancho máximo deseado */
+  height: auto;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+  transition: transform 0.3s ease;
+}
+
+.charts img:hover {
+  transform: scale(1.03);
+}
+
+
+/* Footer */
+footer {
+  background: var(--secondary-color);
+  color: var(--light-text);
+  padding: 2rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  border-top: 1px solid #405266; /* Un borde un poco más oscuro */
+}
+
+footer a {
+  color: var(--light-text);
+  font-size: 1.6rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+  header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 1.6rem;
+  }
+  header nav {
+    margin-top: 0.5rem;
+  }
+  header nav a {
+    margin: 0 0.75rem;
+    font-size: 0.9rem;
+  }
+  .intro h2, .indicadores h2, .graficos h2 {
+    font-size: 1.8rem;
+  }
+  .intro p {
+    font-size: 1rem;
+  }
+  .card {
+    width: calc(50% - 1rem); /* Dos cards por fila */
+  }
+  .charts img {
+    width: 90%; /* Que ocupe más en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%; /* Una card por fila */
+  }
+  .collapsible {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+  .content {
+    padding: 1rem;
+  }
+  .content p {
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nuestro Equipo - Proyecto Final</title> <!-- Título más específico -->
+
+  <!-- CSS: Asegúrate que la ruta sea correcta para Flask -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles-nosotros.css') }}" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Google Fonts (Opcional, para una mejor tipografía) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- El 'main-header' ahora actuará como el hero section -->
+  <header class="main-header hero-section">
+    <div class="hero-content"> <!-- Contenedor para el contenido del hero -->
+      <h1>Conoce a Nuestro Equipo</h1>
+      <p class="subtitle">Expertos apasionados listos para ayudarte</p>
+      <a href="{{ url_for('index') }}" class="back-to-home-link">
+        <i class="fas fa-arrow-left"></i> Volver al Inicio
+      </a>
+    </div>
+  </header>
+
+  <main class="team-section"> <!-- Cambiado section a main por semántica -->
+    <div class="container">
+      <div class="team-grid">
+        <!-- Miembro 1 -->
+        <article class="team-member-card">
+          <div class="member-image-container">
+            <!-- Corregida la ruta de la imagen para Flask -->
+            <img src="{{ url_for('static', filename='assets/perfil_eneldo.jpg') }}" alt="Eneldo Vanstralhen" class="member-photo"/>
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">Eneldo Vanstralhen</h3> <!-- Añadida clase para consistencia -->
+            <p class="member-role">Ingeniero de Sistemas</p>
+            <p class="member-bio">Especialista en soluciones backend, seguridad informática y arquitecturas escalables.</p> <!-- Añadida clase -->
+            <div class="social-links">
+              <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+              <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Miembro 2 -->
+        <article class="team-member-card">
+          <div class="member-image-container">
+            <img src="{{ url_for('static', filename='assets/perfil_diana.jpg') }}" alt="Diana Yopal" class="member-photo"/>
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">DIANA CAROLINA VASQUEZ GUTIERREZ</h3>
+            <p class="member-role">Ingeniera Industrial</p>
+            <p class="member-bio">Analista de datos con enfoque en optimización de procesos y visualización eficiente.</p>
+            <div class="social-links">
+              <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+              <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-briefcase"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Miembro 3 -->
+        <article class="team-member-card">
+          <div class="member-image-container">
+            <!-- Asumo que 'images/perfil3.jpg' debe ser 'assets/perfil3.jpg' o similar para consistencia -->
+            <img src="{{ url_for('static', filename='assets/perfil3.jpg') }}" alt="Gabriel Felipe Quesada Vargas." class="member-photo"/>
+          </div>
+          <div class="member-info">
+            <h3 class="member-name">Gabriel Felipe Quesada Vargas.</h3>
+            <p class="member-role">Ingeniero Industrial</p>
+            <p class="member-bio">Ingeniero Industrial con sólida experiencia en optimización de procesos, gestión de calidad y análisis de datos para la toma de decisiones estratégicas. .</p>
+            <div class="social-links">
+              <a href="#" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+              <a href="#" target="_blank" rel="noopener noreferrer"><i class="fas fa-envelope"></i></a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <!-- Asumiendo que current_year se pasa desde Flask -->
+    <p>© {{ current_year if current_year else '2025' }} Proyecto Final - Bootcamp Análisis de Datos Virtual C2.</p>
+  </footer>
+
+</body>
+</html>
